@@ -10,5 +10,7 @@ router.get('/new', beers.new);
 router.get('/:id', beers.show);
 // post new beer
 router.post('/', beers.create);
+// create comment
+router.post('/:id/comments', beers.createcomment);
 // delete a beer
 router.delete('/:id', beers.destroy);
