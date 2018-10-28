@@ -15,6 +15,8 @@ router.post('/:id/beers', bars.addBeer);
 // remove a beer
 router.get('/:id/beers/:cid/remove', bars.removeBeer)
 // delete a bar
-router.delete('/:id', bar.destroy);
+router.delete('/:id', bars.destroy);
 
 // ? router.delete('/:barId/beers/beerId', bar.destroy);
+
+module.exports = router;

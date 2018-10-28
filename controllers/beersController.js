@@ -12,7 +12,7 @@ module.exports ={
     },
     create: function(req, res, next){
         let data = req.body;
-        beer.create({
+        Beer.create({
             name: data.name,
             style: data.style
         }, function(err,){
@@ -23,8 +23,9 @@ module.exports ={
     show: function(req, res, next){
         Beer.findById(req.params.id).populate('bars').exec(function(err, beer){
             if (err) return next(err);
-                res.render('beer/show', {beer});
+                res.render('beers/show', {beer});
         });
+    
     },
     createComment: function(req, res, next){
         Beer.findById(req.params.id, function(err, beer){

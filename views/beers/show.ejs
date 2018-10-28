@@ -1,26 +1,21 @@
 <%- include('../partials/header') %>
 
 <h1><%= beer.name %></h1>
-<form method="POST" action="/beers/<%= beer._id %>?_method=DELETE">
-    <button class="delete" type="submit">Delete</button>
-</form>
+<h3>Style: <%= beer.style %></h3>
 <hr />
-<h3>s:</h3>
-<% student.courses.forEach(function(course) { %>
-    <p><%= course.name %> - <a href="/students/<%= student._id %>/courses/<%= course._id %>/unenroll">Unenroll</a></p>
+<h3>comments:</h3>
+<% beer.comments.forEach(function(comment) { %>
+    <p>comment: <%= comment.comment %></p>
+    <br>
 <% }); %>
 
 <main>
-    <h3>Add a Course for this Student</h3>
-    <form method="POST" action="/students/<%= student._id %>/courses">
-        <select name="course">
-            <% courses.forEach(function(course) { %>
-                <option value="<%= course._id %>"><%= course.name %></option>
-            <% }); %>
-        </select>
+    <h3>Add a comment to this beer</h3>
+    <form method="POST" action="/beers/<%= beer._id %>/comments">
+        <input type="text" name="name" placeholder="Enter a comment">
         <br>
         <br>
-        <input type="submit" value="Add Course">
+        <input type="submit" value="Add comment">
     </form>
 </main>
 

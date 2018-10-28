@@ -5,7 +5,7 @@ module.exports = {
     index: function(req, res, next){
         Bar.find({}, function(err, bars){
             if(err) return next(err);
-            res.render('bars/index', {bars});
+            res.render('bars/index', {title: 'Bar List',bars});
         });
     },
     new: function(req, res, next){

@@ -14,3 +14,5 @@ router.post('/', beers.create);
 router.post('/:id/comments', beers.createComment);
 // delete a beer
 router.delete('/:id', beers.destroy);
+
+module.exports = router;

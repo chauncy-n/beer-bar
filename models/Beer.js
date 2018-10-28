@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
 
 var commentSchema = new Schema({
@@ -20,11 +19,12 @@ var beerSchema = new Schema({
 beerSchema.post('remove', function(beerInfo) {
 	var Bar = this.model('Bar');
 	Bar.find({beers: beerinfo._id}, function(err, bars) {
-		bars.forEach(function(beerinfo) {
-			barInfo.beers.remove(beerInfo._id);
-			barInfo.save();
+		bars.forEach(function(bar) {
+			bar.beers.remove(beerInfo._id);
+			bar.save();
 		});
 	});	
 });
+
 
 module.exports = mongoose.model('Beer', beerSchema);
