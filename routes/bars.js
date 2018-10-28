@@ -13,6 +13,8 @@ router.post('/', bars.create);
 // new beer to bar
 router.post('/:id/beers', bars.addBeer);
 // remove a beer
-router.get('/:id/beers/:cid/remove', bars.removeBeer);
+router.get('/:id/beers/:cid/remove', bars.removeBeer)
 // delete a bar
 router.delete('/:id', bar.destroy);
+
+// ? router.delete('/:barId/beers/beerId', bar.destroy);

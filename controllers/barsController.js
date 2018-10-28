@@ -49,9 +49,9 @@ module.exports = {
     removeBeer: function(req, res, next){
         Bar.findById(req.params.id, function(err, bar){
             if (err) return next(err);
-            Beer.findById(req.params.id, function(err){
-                bar.beers.remove(beer);
-                bar.save(err, function(){
+            bar.beers.remove(beer);
+            bar.save(err, function(){
+                Beer.findById(req.params.id, function(err){             
                     if (err) return next(err);
                     beer.bars.remove(bar);
                     bar.save(err, function(){

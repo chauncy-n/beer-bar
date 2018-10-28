@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var Schema = mongoose.Schema;
 
 var barSchema = new Schema({
@@ -10,5 +9,15 @@ var barSchema = new Schema({
 }, {
     timestamps: true
 });
+barSchema.post('remove', function(barInfo){
+    var Beer = this.model('Beer');
+    Beer.find({bars: barInfo._id}, function(err, beers){
+        beers.forEach(function(barInfo){
+            beerInfo.bars.remove(barInfo._id);
+            barInfo.Save();
+        });
+    });
+});
+
 
 module.exports = mongoose.model('Bar', barSchema);
