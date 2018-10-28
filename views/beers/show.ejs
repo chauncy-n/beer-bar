@@ -2,6 +2,9 @@
 
 <h1><%= beer.name %></h1>
 <h3>Style: <%= beer.style %></h3>
+<form method="POST" action="/beers/<%= beer._id %>?_method=DELETE">
+    <button class="delete" type="submit">Delete</button>
+</form>
 <hr />
 <h3>comments:</h3>
 <% beer.comments.forEach(function(comment) { %>

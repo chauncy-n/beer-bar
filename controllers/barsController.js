@@ -25,7 +25,7 @@ module.exports = {
         Bar.findById(req.params.id).populate('beers').exec(function(err, bar) {
             if (err) return next(err);
             Beer.find({}, function(err, beers){
-                res.render('/bars/show', {beers, bar});
+                res.render('bars/show', {beers, bar});
             })
         });
     },
