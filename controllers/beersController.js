@@ -1,4 +1,3 @@
-const Bar = require('../models/Bar');
 const Beer = require('../models/Beer');
 
 module.exports ={
@@ -21,4 +20,29 @@ module.exports ={
             res.redirect('/beers')
         })
     },
+    show: function(req, res, next){
+        Beer.findById(req.params.id).populate('bars').exec(function(err, beer){
+            if (err) return next(err);
+                res.render('beer/show', {beer});
+        });
+    },
+    createComment: function(req, res, next){
+        Beer.findById(req.params.id, function(err, beer){
+            if (err) return next(err);
+            var newComment = {
+                comment: req.body.comment
+            };
+            beer.comments.push(newComment)
+            beer.save(function(err){
+                if (err) return next(err);
+                res.redirect('/beers/' + beer._id);
+            });
+        });
+    },
+    destroy: function(req, res, next){
+        Beer.remove({_id:req.params.id}, function(err){
+            if (err) return next(err);
+            res.redirect('/beers');
+        })
+    }
 }
