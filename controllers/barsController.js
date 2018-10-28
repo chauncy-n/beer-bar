@@ -63,7 +63,7 @@ module.exports = {
         })
     },
     destroy: function(req, res, next){
-        Bar.remove(_id.req.params.id< function(err){
+        Bar.remove({_id:req.params.id}, function(err){
             if (err) return next(err);
             res.redirect('/bars');
         })
