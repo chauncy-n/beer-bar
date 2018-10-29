@@ -5,21 +5,23 @@
 <form method="POST" action="/beers/<%= beer._id %>?_method=DELETE">
     <button class="delete" type="submit">Delete</button>
 </form>
+<main>
+        <h3>Add a comment to this beer</h3>
+        <form method="POST" action="/beers/<%= beer._id %>/comments">
+            <input type="text" name="name" placeholder="Enter a comment">
+            <br>
+            <br>
+            <input type="submit" value="Add comment">
+        </form>
+    </main>
 <hr />
 <h3>comments:</h3>
 <% beer.comments.forEach(function(comment) { %>
     <p>comment: <%= comment.comment %></p>
+    <p><%= comment.createdAt.toString() %></p>
     <br>
 <% }); %>
 
-<main>
-    <h3>Add a comment to this beer</h3>
-    <form method="POST" action="/beers/<%= beer._id %>/comments">
-        <input type="text" name="name" placeholder="Enter a comment">
-        <br>
-        <br>
-        <input type="submit" value="Add comment">
-    </form>
-</main>
+
 
 <%- include('../partials/footer') %>
